@@ -1,0 +1,20 @@
+export const headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "Accept-Language": "en-US,en;q=0.5",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Referer": "https://cubusehf.harvestapp.com/",
+    "X-CSRF-Token": "uMwPWHFFSYqQjfM8ipg+m7PTNyaiP+rRI1a+iV8aGvOYR52jEMVvCvxvDKBCx4FHSbQ7ITCeSKiS0qCAYKyjgQ==",
+    "X-Local-Timezone-Offset": "0",
+    "Content-Type": "application/json",
+    "X-Requested-With": "XMLHttpRequest",
+    "Content-Length": "112",
+    "Origin": "https://cubusehf.harvestapp.com",
+    "Connection": "keep-alive",
+    "Cookie": "production_access_token=UnZjZDY1a1dGL05Cbm5hbzRacVBtVm15bVF1QTB3aWF4T2dZNUZEOWVDaGZZTE9nSitORzJGTFh2YWVXRFZpZVAvUm84Qmk0ai83ZFdPOGlLMmN4dTltWnhyM1lxajcvM3FMaURZOU9YMG1FajJpazFCVU1EbFBXSFdLNGJIZG9UREwwQ3k2MmRwUFFGR1BrY2YzVTRnPT0tLVd0NENOK1VMcjRZVE1tc25JblVwdEE9PQ%3D%3D--b4db1f427b013ce8e651ddb112eb7b28970df850; _harvest_sess=oujo8tGZkfU9Bg8oBcYUNCjK31As%2Fj4%2Fhc1RqEoImU2scd5e9%2FLgypXVlxS371Oc4z5lFCq2Ta4AgotAE43%2B5APn8t2oCmyA1SgxHPbtgloxe%2Bw7mJQ6XtxpfbD%2FeVfAHM%2FNHmg0Vdf1%2BsM850F3pR5GuVK1G94jKqfRbFKXk9gNoZ6Tbbs4%2F6%2FL6jpBzGNgETSi5JNBU3VjnioWuYXG60DVeUjiTmlDELBy%2FzAwL4iBrtYnIVTwk0DeyH%2FFybNyxMhOLtdCW7lbr5lP5vpzb8gxQpcxan0QKyuF6d5cui5GfQdcqM99nT5v6%2B6r8DDVZLGXYCXXFqKeA0SfbXm34VK%2Ff%2BmC7xjeo48Raol%2F0Yps%2FhPw4X0qBm29GeB%2BCEMsJv%2BSE32egcGPGCki7z7H4N%2FGfRZNCgfYyg%3D%3D--P1U5oE4YKNzRKMgg--7Hnlq28X8CiAobDJ%2BpBcOg%3D%3D; removed_from_remarketing=true",
+    "Sec-Fetch-Dest": "empty",
+    "Sec-Fetch-Mode": "cors",
+    "Sec-Fetch-Site": "same-origin",
+    "Pragma": "no-cache",
+    "Cache-Control": "no-cache"
+}
