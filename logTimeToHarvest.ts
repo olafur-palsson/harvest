@@ -9,8 +9,14 @@ const PROJECT_ID = 8577980
 const TASK_ID = 9275841
 const USER_ID = 3965920
 const auth = require(`${__dirname}/../../harvest.json`)
-const hours = parseInt(process.argv[2])
-const minutes = parseInt(process.argv[3])
+const date = process.argv[2]
+const time = process.argv[3]
+const datetime = `${date}T${time}`
+const jsdate = new Date(datetime)
+const diff = moment().diff(moment(jsdate))
+const MINUTE_IN_MS = 60 * 1000
+const HOUR_IN_MS = 60 * MINUTE_IN_MS
+const hours = diff / HOUR_IN_MS
 
 const PROJECTS = {
     tri: {
@@ -26,8 +32,8 @@ const createEntry = async () => {
             user_id: USER_ID,
             task_id: TASK_ID,
             spent_date: now.format('YYYY-MM-DD'),
-            hours: `${hours + minutes / 60}`,
-            note: 'Sjalfvirk skraning'
+            hours: `${hours}`,
+            notes: 'Sjalfvirk skraning'
         },
         method: 'post',
         headers: {
@@ -36,7 +42,15 @@ const createEntry = async () => {
             'User-Agent': 'MyApp (yourname@example.com)'
         }
     })
-    console.log(`Successfully logged ${hours} hours and ${minutes} minutes`)
+    console.log(`Successfully logged ${Math.floor(hours)} hours and ${Math.floor((hours % 1) * 60)} minutes.`)
 }
 
-createEntry().catch(err => process.exit(1))
+createEntry().catch(err => {
+  console.error(err)
+  if (err.response) {
+    console.error(err.response)
+  } else {
+    console.error(err)
+  }
+  process.exit(1)
+})
