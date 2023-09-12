@@ -1,10 +1,9 @@
 import moment from 'moment'
 import axios from 'axios'
-import { Project } from '../projects'
-const auth = require(`${__dirname}/../../../harvest.json`)
+import auth from './../../../harvest.json' assert { type: 'json' }
 
 export class Harvest {
-  async createEntry (project: Project, hours: number) {
+  async createEntry (project, hours, message) {
     const now = moment()
     await axios.request({
       url: 'https://api.harvestapp.com/v2/time_entries',
@@ -14,7 +13,7 @@ export class Harvest {
         task_id: project.taskId,
         spent_date: now.format('YYYY-MM-DD'),
         hours: `${hours}`,
-        notes: 'Sjalfvirk skraning'
+        notes: message
       },
       method: 'post',
       headers: {
@@ -23,6 +22,7 @@ export class Harvest {
         'User-Agent': 'MyApp (yourname@example.com)'
       }
     })
-    console.log(`Successfully logged ${Math.floor(hours)} hours and ${Math.floor((hours % 1) * 60)} minutes.`)
+    console.log(hours)
+    console.log(`${project.name} Logged ${Math.floor(hours)} hours and ${Math.floor((hours % 1) * 60)} minutes.`)
   }
 }

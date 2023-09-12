@@ -1,4 +1,4 @@
-export const PROJECTS: Project[] = [
+export const PROJECTS = [
   {
     name: 'TRI',
     projectId: 25062015,
@@ -49,16 +49,9 @@ export const PROJECTS: Project[] = [
   }
 ]
 
-export const Cubus: Project = {
+export const Cubus = {
   name: 'Cubus',
   projectId: 8577980,
   taskId: 9275841,
   wakaIds: []
-}
-
-export interface Project {
-  name: string
-  projectId: number,
-  taskId: number
-  wakaIds: string[]
 }

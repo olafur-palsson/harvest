@@ -8,6 +8,7 @@
   },
   "author": "",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
     "@types/moment": "^2.13.0",
     "axios": "^0.22.0",
