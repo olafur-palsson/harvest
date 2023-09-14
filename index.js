@@ -51,8 +51,14 @@ const index = async () => {
         name: 'msg',
         message: project.name + '?',
         initial: 'Sjálfvirk skráning'
+      }, {
+        type: 'number',
+        message: 'Tímar',
+        float: true,
+        increment: 0.11,
+        name: 'hours'
       }])
-      await harvest.createEntry(proj, hours, res.message)
+      await harvest.createEntry(proj, Number(res.hours || hours), res.msg)
     }
   } else {
     console.log('No projects matched')

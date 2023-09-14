@@ -7,7 +7,6 @@ export class WakaApi {
   async getProjectsWorked() {
     const result = await this.getData()
     const projects = result.data[0]?.projects || []
-    console.log(projects)
     return projects.filter(project => PROJECTS.find(proj => proj.wakaIds.includes(project.name)))
   }
 
