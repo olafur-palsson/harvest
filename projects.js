@@ -46,6 +46,12 @@ export const PROJECTS = [
     projectId: 28297418,
     taskId: 16382175,
     wakaIds: ['Halldor2021', 'Halldor2023']
+  },
+  {
+    name: 'MS',
+    projectId: 37936784,
+    taskId: 12856008,
+    wakaIds: ['MsVendor']
   }
 ]
 
