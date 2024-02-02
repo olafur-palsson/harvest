@@ -14,3 +14,15 @@ export const countDays = () => {
     return daysToWork
 }
 
+export const countWorkdays = () => {
+    let current = moment().startOf('month')
+    const month = current.month()
+    let daysToWork = 0
+    while(month === current.month()) {
+        if (current.weekday() < 5) {
+            daysToWork++;
+        }
+        current = current.add(1, 'day')
+    }
+    return daysToWork
+}

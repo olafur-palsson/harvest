@@ -1,8 +1,8 @@
-import { countDays } from './infra/days-remaining.js'
+import { countDays, countWorkdays } from './infra/days-remaining.js'
 import { calculateHours } from './infra/hours-remaining.js'
 import moment from 'moment'
 
-const getHoursWorked = () => {
+const hoursWorkedToday = () => {
   const date = process.argv[2]
   const time = process.argv[3]
   const datetime = `${date}T${time}`
@@ -15,22 +15,35 @@ const getHoursWorked = () => {
 
 const main = async () => {
     const hours = await calculateHours()
-    const hoursPerDayRemaining = hours / countDays()
-    const hoursWorked = await getHoursWorked()
+    const daysLeft = countDays()
+    const hoursWorked = await hoursWorkedToday()
+    const hoursPerDayRemaining = (hours + hoursWorked) / (daysLeft)
+    const workDays = countWorkdays()
 
-    console.log(`PAR: ${hoursPerDayRemaining.toFixed(2)}`)
-    console.log(`NOW: ${hoursWorked.toFixed(2)}`)
+    const hPerDayRemaining = Math.floor(hoursPerDayRemaining).toFixed(0)
+    const mPerDayRemaining = ((hoursPerDayRemaining - Math.floor(hoursPerDayRemaining)) * 60).toFixed(0)
+
+    const hToday = Math.floor(hoursWorked).toFixed(0)
+    const mToday = ((hoursWorked - Math.floor(hoursWorked)) * 60).toFixed(0)
+
+    console.log(`DAY: ${workDays - daysLeft}/${workDays}`)
+    console.log(`PAR: ${hPerDayRemaining}:${mPerDayRemaining.padStart(2, '0')}`)
+    console.log(`NOW: ${hToday}:${mToday.padStart(2, '0')}`)
     console.log('')
-    const surplus = hoursWorked - hoursPerDayRemaining
+    let surplus = hoursWorked - hoursPerDayRemaining 
     let status = 'Unknown'
-    if (surplus < -1) {
+    if (surplus < -1.25) {
         status = 'Behind'
-    } else if (surplus < 0) {
+    } else if (surplus < -0.75) {
+        status = 'Eagle+'
+    } else if (surplus < -0.25) {
         status = 'Eagle'
-    } else if (surplus < 1) {
+    } else if (surplus < 0.5) {
         status = 'Par'
-    } else if (surplus < 2) {
+    } else if (surplus < 1) {
         status = 'Birdie'
+    } else if (surplus < 1.5) {
+        status = 'Birdie+'
     } else {
         status = 'Ahead'
     }

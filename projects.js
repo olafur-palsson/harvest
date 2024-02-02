@@ -48,6 +48,12 @@ export const PROJECTS = [
     wakaIds: ['Halldor2021', 'Halldor2023']
   },
   {
+    name: 'Bílanaust',
+    projectId: 26962528,
+    taskId: 15668625,
+    wakaIds: ['BilanaustVendor']
+  },
+  {
     name: 'MS',
     projectId: 37936784,
     taskId: 12856008,

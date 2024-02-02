@@ -18,7 +18,13 @@ export const calculateHours = async () => {
   const end = now.startOf('month').add(1, 'month').format('YYYY-MM-DD')
   const harvest = new Harvest()
   const entries = await harvest.getEntries(start, end)
+  // ignore this one { id: 37577431, name: 'B2B lausn uniconta', code: 'UniB2B' },
+
+  const B2BLausn = 37577431
   let sum = 0
-  entries.time_entries.map(entry => entry.rounded_hours).forEach(h => sum += h)
+  entries.time_entries
+    .filter(entry => entry.project.id != B2BLausn)
+    .map(entry => entry.rounded_hours)
+    .forEach(h => sum += h)
   return 120 - hours - sum
 }

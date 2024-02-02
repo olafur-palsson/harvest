@@ -6,8 +6,9 @@ export class Harvest {
   async getEntries (from, to) {
 
     const PROJECT_ID = 8577980
+    const CLIENT_ID = 3689429
     const result = await axios.request({
-        url: `https://api.harvestapp.com/v2/time_entries?project_id=${PROJECT_ID}&from=${from}&to=${to}`,
+        url: `https://api.harvestapp.com/v2/time_entries?client_id=${CLIENT_ID}&project_id=${PROJECT_ID}&from=${from}&to=${to}`,
         method: 'get',
         headers: {
             'Authorization': `Bearer ${auth.token}`,
