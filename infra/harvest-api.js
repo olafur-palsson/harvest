@@ -1,6 +1,6 @@
 import moment from 'moment'
 import axios from 'axios'
-import auth from './../../../harvest.json' assert { type: 'json' }
+import auth from './../../../harvest.json' with { type: "json" }
 
 export class Harvest {
   async getEntries (from, to) {

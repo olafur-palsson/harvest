@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "lib": ["esnext"],
+        "noImplicitUseStrict": true,
         "module": "esnext",
         "outDir": "build",
         "target": "esnext",

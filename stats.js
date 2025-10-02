@@ -1,5 +1,5 @@
 import { countDays, countWorkdays } from './infra/days-remaining.js'
-import { calculateHours } from './infra/hours-remaining.js'
+import { calculateHoursRemaining, hoursLogged } from './infra/hours-remaining.js'
 import moment from 'moment'
 
 const hoursWorkedToday = () => {
@@ -14,11 +14,12 @@ const hoursWorkedToday = () => {
 }
 
 const main = async () => {
-    const hours = await calculateHours()
+    const hours = await calculateHoursRemaining()
     const daysLeft = countDays()
     const hoursWorked = await hoursWorkedToday()
     const hoursPerDayRemaining = (hours + hoursWorked) / (daysLeft)
     const workDays = countWorkdays()
+    const logged = await hoursLogged()
 
     const hPerDayRemaining = Math.floor(hoursPerDayRemaining).toFixed(0)
     const mPerDayRemaining = ((hoursPerDayRemaining - Math.floor(hoursPerDayRemaining)) * 60).toFixed(0)
@@ -26,10 +27,11 @@ const main = async () => {
     const hToday = Math.floor(hoursWorked).toFixed(0)
     const mToday = ((hoursWorked - Math.floor(hoursWorked)) * 60).toFixed(0)
 
-    console.log(`DAY: ${workDays - daysLeft}/${workDays}`)
+    console.log(`DAY: ${workDays - daysLeft + 1}/${workDays}`)
     console.log(`PAR: ${hPerDayRemaining}:${mPerDayRemaining.padStart(2, '0')}`)
     console.log(`NOW: ${hToday}:${mToday.padStart(2, '0')}`)
     console.log('')
+    // console.log(`120: ${(logged + hoursPerDayRemaining * daysLeft).toFixed(0)}`)
     let surplus = hoursWorked - hoursPerDayRemaining 
     let status = 'Unknown'
     if (surplus < -1.25) {

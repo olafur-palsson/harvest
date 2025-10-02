@@ -1,7 +1,7 @@
 import axios from 'axios'
 import moment from 'moment'
 import { PROJECTS } from '../projects.js'
-import auth from './../../../harvest.json' assert { type: 'json' }
+import auth from './../../../harvest.json'
 
 export class WakaApi {
   async getProjectsWorked() {
